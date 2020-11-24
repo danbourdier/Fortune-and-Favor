@@ -1,8 +1,8 @@
+import Card from './card.js'
+
 // Directives for this class:
 //  1. class method to render initial layout with inner html. Receives n*n cards
-//  2. 
 
-import Card from './card.js'
 
 // To externalize the ability to create multiple instances of cards for our
 //  Layout class, we accept a size argument to determine how many instaces we create
@@ -29,14 +29,15 @@ class Layout {
   }
 
   renderLayout() {
+    let hashedDeck = {  }
     // First we want to target our root to hook into
     const container = document.getElementById('root')
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
     let html = ''
 
-    this.cards.forEach( card => {
+    this.cards.forEach( (card, idx) => {
       let segment = `
-        <article class="card">
+        <article class="card" id="card-${idx}">
           <h3> 
             ${ card.value }
           </h3>
