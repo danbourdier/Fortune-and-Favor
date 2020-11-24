@@ -22,7 +22,7 @@
 
 class Game {
   constructor() {
-    this.moves = 0
+    // this.moves = 0 <--- optional game feature
     this.deck = []
     this.remainingCards = 0
     this.revealedCards = []
@@ -36,6 +36,7 @@ class Game {
     // #getCards returns a reference we assign to our instance variable this.deck
     this.deck = newLayout.getCards
     this.remainingCards = this.deck.length
+    this.revealedCards = []
 
 
     // while( this.remainingCards > 1 ) {
