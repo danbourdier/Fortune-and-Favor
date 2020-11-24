@@ -1,3 +1,5 @@
+import Layout from './layout.js'
+
 // Directives:
 //  1. method to start game
 //  2. method to end game
@@ -15,7 +17,7 @@
 // OPTIONS FOR FLOW
 //  Hard refresh, 
 //  deleting instance of game,   overkill
-//  restetting instance variables by wiping layout
+//  resetting instance variables by wiping layout
   // reset moves, reset remaining Cards, in #playGame create the deck instead of passing as arg
   //  essentially resetting all instance variables
 
@@ -30,7 +32,7 @@ class Game {
 
   startGame() {
     // create the layout (instantiation and rendering of each card instance.
-    const newLayout = new Layout(3, 3)
+    const newLayout = new Layout(3, 3) // <--- futurefeature, optional difficulty
     // #renderLayout renders our board
     newLayout.renderLayout()
     // #getCards returns a reference we assign to our instance variable this.deck
@@ -38,18 +40,15 @@ class Game {
     this.remainingCards = this.deck.length
     this.revealedCards = []
 
-
-    // while( this.remainingCards > 1 ) {
-    // }
   }
 
-  gameover() {
+  isGameOver() {
     // This is what is called everytime we call click on a card
-    document.getElementById('game-over-text').className('visible');
+    // We check each of our game instance vars to see if they evaluate to a halting condition
+
+    // document.getElementById('game-over-text').className('visible')
     // call to resetGame()
   }
-
-  
 
   resetGame() {
     //  reset variables here
