@@ -11,7 +11,13 @@ class Card {
     this.visible = false
   }
 
+  get value() {
+    return this.value
+  }
 
+  isVisible() {
+    return this.visible
+  }
 
 
 }
