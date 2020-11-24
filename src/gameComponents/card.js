@@ -1,5 +1,17 @@
 
+class Card {
+  constructor(value) {
+    this.value = value
+    this.visible = false
+  }
 
-const card = 'Card works'
 
-export default card
+
+
+}
+
+
+
+
+
+export default Card

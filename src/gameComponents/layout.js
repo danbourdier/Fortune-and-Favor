@@ -1,4 +1,13 @@
+// Directives for this class:
+//  1. class method to render initial layout with inner html. Receives n*n cards
+//  2. 
 
-const layout = 'Layout works'
+class Layout {
+  constructor() {
 
-export default layout
+  }
+
+
+}
+
+export default Layout

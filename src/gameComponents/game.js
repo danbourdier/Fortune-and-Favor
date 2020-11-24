@@ -1,4 +1,11 @@
 
-const game = 'Game.js works'
+class Game {
+  constructor() {
 
-export default game
+  }
+
+
+
+}
+
+export default Game
