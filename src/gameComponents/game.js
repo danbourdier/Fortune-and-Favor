@@ -40,7 +40,6 @@ class Game {
 
 
     // while( this.remainingCards > 1 ) {
-
     // }
   }
 
@@ -49,6 +48,8 @@ class Game {
     document.getElementById('game-over-text').className('visible');
     // call to resetGame()
   }
+
+  
 
   resetGame() {
     //  reset variables here

@@ -35,6 +35,8 @@ class Layout {
     this.cards = createDeck(this.size)
     // First we want to target our root to hook into
     const container = document.getElementById('root')
+    // Setting the innerHTML to blank ensures we can start from a clean slate
+    container.innerHTML = ''
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
     let html = ''
 
