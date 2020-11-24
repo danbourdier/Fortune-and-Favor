@@ -1,3 +1,9 @@
-import here from './gameComponents/card.js'
+import card from './gameComponents/card.js'
+import game from './gameComponents/game.js'
+import layout from './gameComponents/layout.js'
 
-console.log(here)
+console.log( 
+  card,
+  game,
+  layout
+)

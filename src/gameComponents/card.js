@@ -1,5 +1,5 @@
 
 
-const here = 'we are here'
+const card = 'Card works'
 
-export default here
+export default card
