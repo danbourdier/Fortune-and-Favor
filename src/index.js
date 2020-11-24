@@ -8,9 +8,16 @@ const port = 3000
 app.use( express.static('/src') )
 app.use( express.static('/public') )
 
-
+// Our route to boot up local host on
 app.get('/', (req, res) => {
   // __dirname starts off at /src so i need to slice off the last 3 chars of my path!
   let newDir = __dirname.slice(0, __dirname.length - 3)
   res.sendFile(path.join(newDir + '/public/index.html'))
 })
+
+
+// Our server initiation
+app.listen(port, () => {
+  
+})
+
