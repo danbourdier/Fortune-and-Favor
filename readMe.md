@@ -4,5 +4,5 @@
 ### INSTRUCTIONS
 * cd into root dir
 * npm install
-* run ` node src/index.js `
+* run ` node src/server.js `
 * Open browser and go to `localhost:3000` !

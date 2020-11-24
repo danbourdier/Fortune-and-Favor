@@ -3,7 +3,7 @@
 //  2. 
 
 class Layout {
-  constructor() {
+  constructor(rows, columns) {
 
   }
 
