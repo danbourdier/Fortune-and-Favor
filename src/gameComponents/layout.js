@@ -25,11 +25,14 @@ const createDeck = size => {
 class Layout {
   constructor(rows, columns) {
     this.size = Number(rows) * Number(columns)
-    this.cards = createDeck( this.size )
+    this.cards = []
+
+    // Ensure that context is bound to an instance of Layout
+    this.getCards = this.getCards.bind(this)
   }
 
   renderLayout() {
-    let hashedDeck = {  }
+    this.cards = createDeck(this.size)
     // First we want to target our root to hook into
     const container = document.getElementById('root')
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
@@ -48,6 +51,11 @@ class Layout {
 
     // Finally we change the HTML in our root to contain all our cards
     container.innerHTML = html
+  }
+
+  // This returns our deck belonging to an instance of our board/layout
+  getCards() {
+    return this.cards
   }
 
 

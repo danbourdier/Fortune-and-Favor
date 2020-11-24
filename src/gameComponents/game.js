@@ -21,21 +21,21 @@
 
 
 class Game {
-  constructor(deck) {
+  constructor() {
     this.moves = 0
-    this.deck = deck
+    this.deck = []
     this.remainingCards = deck.length
     this.revealedCards = []
   }
 
   startGame() {
-    // creat the layout (instantiation and rendering of each card instance. (with elements))
+    // create the layout (instantiation and rendering of each card instance. (with elements))
     const newLayout = new Layout(3, 3)
     newLayout.renderLayout()
 
-    while( this.remainingCards > 1 ) {
+    // while( this.remainingCards > 1 ) {
 
-    }
+    // }
   }
 
   gameover() {
