@@ -1,12 +1,15 @@
-const express = require('express')
+// const express = require('express')
+// const app = express()
+// const path = require('path')
+import express from "express"
 const app = express()
-const path = require('path')
+import path from "path"
 
 const port = 3000
 
 // This enables our app to have access to what we have access to in our file tree.
-app.use( express.static('/src') )
-app.use( express.static('/public') )
+app.use( express.static('src') )
+app.use( express.static('public') )
 
 // Our route to boot up local host on
 app.get('/', (req, res) => {
