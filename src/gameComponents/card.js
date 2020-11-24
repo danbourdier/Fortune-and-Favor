@@ -1,9 +1,8 @@
 // Directives:
-//  1. construct card instances
-//  2. instance method to track visibility
-//  3. method to retrieve value
-//  4. method to change card status hidden/visible
-//  5. 
+//  1. construct card instances 
+//  2. instance method to track visibility 
+//  3. method to retrieve value 
+//  4. method to change card status hidden/visible 
 
 class Card {
   constructor(value) {
@@ -11,7 +10,7 @@ class Card {
     this.visible = false
   }
 
-  get value() {
+  value() {
     return this.value
   }
 
@@ -19,11 +18,12 @@ class Card {
     return this.visible
   }
 
+  flip() {
+    this.visible = !this.visible
+  }
+
 
 }
-
-
-
 
 
 export default Card
