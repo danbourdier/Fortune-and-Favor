@@ -3,11 +3,19 @@
 //  2. 
 
 class Layout {
-  constructor(rows, columns) {
+  constructor(rows, columns, cards) {
+    this.size = Number(rows) * Number(columns)
+    this.cards = cards
+  }
 
+  static renderLayout() {
+    const root = document.getElementById('root')
+    
   }
 
 
 }
+
+
 
 export default Layout
