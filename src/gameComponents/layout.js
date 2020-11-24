@@ -7,13 +7,13 @@ class Layout {
     this.size = Number(rows) * Number(columns)
     this.cards = cards
   }
-
+  // We create a class method unavailable to child objects
   static renderLayout() {
     // First we want to target our root to hook into
     const container = document.getElementById('root')
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
     let html = ''
-    
+
     this.cards.forEach(card => {
       let segment = `
         <article>
