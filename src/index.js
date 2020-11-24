@@ -18,6 +18,6 @@ app.get('/', (req, res) => {
 
 // Our server initiation
 app.listen(port, () => {
-  
+  console.log(`Listening at http://localhost:${port}!`)
 })
 
