@@ -24,14 +24,19 @@ class Game {
   constructor() {
     this.moves = 0
     this.deck = []
-    this.remainingCards = deck.length
+    this.remainingCards = 0
     this.revealedCards = []
   }
 
   startGame() {
-    // create the layout (instantiation and rendering of each card instance. (with elements))
+    // create the layout (instantiation and rendering of each card instance.
     const newLayout = new Layout(3, 3)
+    // #renderLayout renders our board
     newLayout.renderLayout()
+    // #getCards returns a reference we assign to our instance variable this.deck
+    this.deck = newLayout.getCards
+    this.remainingCards = this.deck.length
+
 
     // while( this.remainingCards > 1 ) {
 
