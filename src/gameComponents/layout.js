@@ -9,20 +9,23 @@ import Card from './card'
 
 const createDeck = size => {
   let deck = []
+  let currVal = 1
 
   while (deck.length < size) {
-    let card = new Card()
+    let card = new Card(currVal)
     deck.push( card )
-  }
 
+    currVal++
+  }
+  debugger
   return deck
 }
 
 
 class Layout {
-  constructor(rows, columns, cards) {
+  constructor(rows, columns) {
     this.size = Number(rows) * Number(columns)
-    this.cards = cards
+    this.cards = createDeck( this.size )
   }
 
   // We create a class method unavailable to child objects
@@ -32,11 +35,11 @@ class Layout {
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
     let html = ''
 
-    this.cards.forEach(card => {
+    this.cards.forEach( card => {
       let segment = `
         <article>
           <h3> 
-            ${ card.value }
+            ${ card.value() }
           </h3>
         </article>
       `
