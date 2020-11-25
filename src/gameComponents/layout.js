@@ -33,13 +33,19 @@ class Layout {
 
 
   static applyListeners(cards) {
-    
+
     cards.forEach( (card, idx) => {
       let cardHTML = document.getElementById(`card-${idx}`)
-
-      cardHTML.addEventListener()
+      
+      cardHTML.addEventListener('click', () => {
+        console.log(card)
+        console.log('line-break-test')
+        console.log(card.value)
+      })
 
     })
+
+
   }
 
 
