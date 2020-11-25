@@ -29,10 +29,13 @@ class Game {
 
 
   cardMatchingLogic(card1, card2) {
-    if (target.isMatching(this.cardToMatch)) {
+    if (card1.isMatching(card2)) {
       // If matching 
-    } else {
+      this.revealedCards.push( [ card1.value, card2.value ] )
 
+    } else {
+      // set css back
+      // flip (!both?)
     }
   }
 
@@ -44,13 +47,12 @@ class Game {
     cardHTML.addEventListener('click', () => {
       cardHTML.className = !target.isVisible() ? 'shown-card' : 'card'
       target.flip()
-
-      if ( weHaveACard ) { // if we have one card selected already
+      // have setTimeout to give transition time?
+      if ( weHaveACard ) { 
         this.cardMatchingLogic( target, this.cardToMatch )
       } else {
         this.cardToMatch = target
       }
-
 
     })
   }
