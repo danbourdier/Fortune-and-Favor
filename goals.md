@@ -28,3 +28,5 @@ Comparing cards is a multiple step process
 
 Need to ensure that there are pairs of cards that share the same value.
   * Maybe apply logic on render logic. Or createDeck?
+  * Or just pass over created deck and reassign values of every second card's value && unique image
+     will evaluate to the previous card's properties!
