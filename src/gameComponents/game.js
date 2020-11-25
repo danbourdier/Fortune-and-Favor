@@ -185,10 +185,18 @@ class Game {
         gameOverModal.className = "visible-gameover-modal"
         break;
       default:
+          null
         break;
     }
     
+    // The last step to the process, our reset button!
+    shinyButton.addEventListener('click', event => {
+      event.preventDefault()
+      event.stopPropagation()
 
+      this.startGame()
+      gameOverModal.className = 'hidden'
+    })
   }
 
 
