@@ -112,6 +112,7 @@ class Layout {
       const prevCard = list[i - 1]
       const prevVal = prevCard?.value
 
+      card.html.innerText = prevVal
       card.setValue( prevVal )
       cleanDeck.push( prevCard, card )
     }

@@ -40,14 +40,19 @@ class Game {
 
     if (card1.isMatching(card2)) {
       // If matching 
-      card1HTML.removeEventListener('click', clicker)
-      card2HTML.removeEventListener('click', clicker)
+      // card1HTML.removeEventListener('click', () => {})
+      // card2HTML.removeEventListener('click', () => {})
+
       // locked CSS, need to add class on top of revealed unique background to *darken* image
-      card1HTML.className = 'locked'
-      card2HTML.className = 'locked'
+      card1HTML.classList.add('blocked')
+      card2HTML.classList.add('blocked')
+
+      // card1HTML.className = 'locked'
+      // card2HTML.className = 'locked'
+
       // Store our cards
       this.revealedCards.push( [ card1.value, card2.value ] )
-
+      console.log(this.revealedCards)
       // win logic check call
     } else {
       // set css back
@@ -56,22 +61,24 @@ class Game {
       // flip (both)
       card1.flip()
       card2.flip()
+      console.log(2, this.cardToMatch)
+      this.cardToMatch = ''
       // lose logic check call
     }
   }
 
 
   clickLogic(target, domCard) {
-    let weHaveACard = this.cardToMatch ? this.cardToMatch : ''
+    // let weHaveACard = this.cardToMatch.constructor.name == 'Card' ? this.cardToMatch : ''
     let that = this
-    debugger
-    domCard.addEventListener('click', function clicker() {
-      that.moves++
 
+    domCard.addEventListener('click', () => {
+      that.moves++
+      console.log( 1, that.cardToMatch )
       domCard.className = !target.isVisible() ? 'shown-card' : 'card'
       target.flip()
-      // have setTimeout to give transition time?
-      if ( weHaveACard ) { 
+
+      if ( that.cardToMatch.constructor.name == "Card" ) { 
         that.cardMatchingLogic( target, that.cardToMatch )
       } else {
         that.cardToMatch = target
@@ -84,11 +91,10 @@ class Game {
   applyLogic() {
     // I want each html card to execute a function with the card whose value shares the element's id
     this.deck?.forEach( card => {
-      // let cardHTML = document.getElementById(`card-${ card.html.id }`)
-      debugger
       let cardHTML = card?.html
-      this.clickLogic(card, cardHTML)  
+      this.clickLogic( card, cardHTML )    
     })
+
   }
 
 

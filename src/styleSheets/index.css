@@ -37,7 +37,10 @@
   }
 
 
-
+.blocked {
+  pointer-events: none;
+  opacity: .3;
+}
 
 
 
