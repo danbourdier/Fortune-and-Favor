@@ -15,9 +15,9 @@ class Layout {
   static createDeck = size => {
     let deck = []
     let currVal = 1
-
+    // Future, create list of image strings to assign
     while (deck.length < size) {
-      let card = new Card(currVal)
+      let card = new Card(currVal, currVal)
       deck.push(card)
 
       currVal++
@@ -34,8 +34,11 @@ class Layout {
 
     for ( let i = 1; i < this.cards.length; i += 2 ) {
       const curr = this.cards[i]
+        let currVal = curr.value
       const prev = this.cards[i - 1]
-      
+        let prevVal = prev.value
+
+
     }
 
     return cleanDeck
@@ -62,7 +65,7 @@ class Layout {
 
     this.cards.forEach( card => {
       let segment = `
-        <article class="card" id="card-${ card.value }">
+        <article class="card" id="card-${ card.idx }">
           <h3> 
             ${ card.value }
           </h3>

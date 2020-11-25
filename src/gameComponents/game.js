@@ -29,8 +29,8 @@ class Game {
 
 
   cardMatchingLogic(card1, card2) {
-    const card1Html = document.getElementById( `card-${ card1.value }` )
-    const card2Html = document.getElementById( `card-${ card2.value }` )
+    const card1Html = document.getElementById( `card-${ card1.idx }` )
+    const card2Html = document.getElementById( `card-${ card2.idx }` )
 
     if (card1.isMatching(card2)) {
       // If matching 
@@ -76,8 +76,8 @@ class Game {
 
   applyLogic() {
     // I want each html card to execute a function with the card whose value shares the element's id
-    this.deck.forEach( card => {
-      let cardHTML = document.getElementById(`card-${ card.value }`)
+    this.deck?.forEach( card => {
+      let cardHTML = document.getElementById(`card-${ card.idx }`)
       this.clickLogic(card, cardHTML)  
     })
   }

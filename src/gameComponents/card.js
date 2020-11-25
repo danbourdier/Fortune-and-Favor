@@ -6,14 +6,25 @@
 //  5. assign an image to each instance
 
 class Card {
-  constructor(value) {
+  constructor(value, idx) {
     this.value = value
     this.visible = false
     this.image = ''    
+
+    this.idx = idx
+  }
+
+
+  idx() {
+    return this.idx
   }
 
   value() {
     return this.value
+  }
+
+  setValue(arg) {
+    this.value = arg
   }
 
   isVisible() {
