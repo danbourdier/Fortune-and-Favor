@@ -11,12 +11,21 @@ class Card {
     this.visible = false
     this.image = ''    
 
+    this.html = ''
     this.idx = idx
   }
 
 
   idx() {
     return this.idx
+  }
+
+  html() {
+    return this.html
+  }
+
+  setHtml(arg) {
+    this.html = arg
   }
 
   value() {
