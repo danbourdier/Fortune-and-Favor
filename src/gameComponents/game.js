@@ -86,7 +86,7 @@ class Game {
 
   startGame() {
     // create the layout (instantiation and rendering of each card instance.
-    const newLayout = new Layout(3, 3) // <--- future feature, optional difficulty
+    const newLayout = new Layout(4, 4) // <--- future feature, optional difficulty
     // #renderLayout renders our board
     newLayout.renderLayout()
     // #getCards returns a reference we assign to our instance variable this.deck

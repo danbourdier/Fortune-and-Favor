@@ -26,9 +26,19 @@ class Layout {
     return deck
   }
 
+  // When we create our deck we dont have matching values yet, this solves that.
   cleanCards() {
     // our logic to pass over deck, reassign props to ensure we 
     // have duplicate vals
+    let cleanDeck = []
+
+    for ( let i = 1; i < this.cards.length; i += 2 ) {
+      const curr = this.cards[i]
+      const prev = this.cards[i - 1]
+      
+    }
+
+    return cleanDeck
   }
 
   shuffleDeck() {
@@ -66,7 +76,6 @@ class Layout {
 
   // This returns our deck
   getCards() {
-
     return this.shuffleDeck()
   }
 
