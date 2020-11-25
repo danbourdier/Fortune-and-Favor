@@ -104,12 +104,12 @@ class Layout {
   }
 
   // When we create our deck we dont have matching values yet, this solves that.
-  cleanCards(deck) {
+  cleanCards(list) {
     let cleanDeck = []
 
     for (let i = 1; i < this.size; i += 2) {
-      const card = deck[i]
-      const prevVal = deck[i - 1]?.value
+      const card = list[i]
+      const prevVal = list[i - 1]?.value
 
       card.setValue(prevVal)
       cleanDeck.push(card)
@@ -134,45 +134,42 @@ class Layout {
       currVal++
     }
 
-    return cleanCards(deck)
+    return deck
   }
 
   
 
-  shuffleDeck() {
-    // let data = this.cleanCards()
-    this.cleanCards()
-    let shuffledData = this.cards.sort(() => Math.random() - 0.5)
-
-    return shuffledData
+  shuffleDeck(deck) {
+    return deck.sort(() => Math.random() - 0.5)
+    // let shuffledData = deck.sort(() => Math.random() - 0.5)
+    // return shuffledData
   }
 
 
   renderLayout() {
-    this.cards = Layout.createDeck(this.size)
+    let unCleanDeck  = Layout.createDeck( this.size ) 
+    let unShuffledDeck = this.cleanCards( unCleanDeck )
+    this.cards = this.shuffleDeck( unShuffledDeck )
     // First we want to target our root to hook into
     const container = document.getElementById('root')
-    // Setting the innerHTML to blank ensures we can start from a clean slate
-    container.innerHTML = ''
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
     let html = `
       <figure id="stats">
       
       </figure>
     `
+    // Setting the innerHTML to blank ensures we can start from a clean slate
     container.innerHTML = html
 
     this.cards.forEach(card => {
-      container.appendChild(card.html)
-
+      container.appendChild( card.html )
     })
     
 
   }
 
   getCards() {
-    // return this.shuffleDeck()
-    // console.log(this.shuffleDeck())
+    return this.cards
   }
 
 
