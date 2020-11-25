@@ -26,7 +26,7 @@ class Layout {
   constructor(rows, columns) {
     this.size = Number(rows) * Number(columns)
     this.cards = []
-    
+
   }
 
 
@@ -38,9 +38,14 @@ class Layout {
       try {
 
         cardHTML.addEventListener('click', () => {
-          console.log(card)
-          console.log('line-break-test')
-          console.log(card.value)
+          // console.log(card)
+          // console.log('line-break-test')
+          // console.log(card.value)
+          console.log(card.isVisible())
+          card.flip()
+          console.log(card.isVisible())
+
+
         })
 
       } catch(error) {
