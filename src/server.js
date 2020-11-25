@@ -7,6 +7,7 @@ const port = 3000
 // This enables our app to have access to what we have access to in our file tree.
 app.use( express.static('src') )
 app.use( express.static('src/styleSheets') )
+app.use( express.static('src/images') )
 app.use( express.static('public') )
 
 // Our route to boot up local host on

@@ -12,6 +12,9 @@ class Layout {
     this.cards = []
   }
 
+  static getCardImages() {
+    
+  }
 
   // This solves our issue of not having matching cards(values)
   cleanCards(list) {

@@ -1,13 +1,17 @@
 
 .card {
-  padding: 6%;
+  /* padding: 6%; */
   background-color: darkorange;
   border: grey solid 2px;
   border-radius: 6px;
   transition: all .5s ease;
-  width: 4vw;
-  height: 14vh;
+  width: 22%;
+  height: 43%;
+  /* width: 4vw;
+  height: 14vh; */
   margin: .5%;
+  background-image: url(Death.jpg);
+  background-size: cover;
 }
 
   .shown-card {
@@ -23,3 +27,8 @@
   pointer-events: none;
   opacity: .3;
 }
+
+
+/* 4vw */
+/* width 22%
+  height 43% */
