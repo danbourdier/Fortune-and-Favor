@@ -28,14 +28,16 @@ class Game {
   }
 
 
-
+  isMatching(card1, card2) {
+    return card1.value == card2.value
+  }
 
 
   clickLogic(instance, cardHTML) {
 
     cardHTML.addEventListener('click', () => {
-      //  checks win/lose conditions
-      // compares cards
+
+
       cardHTML.className = !instance.isVisible() ? 'shown-card' : 'card'
       instance.flip()
     })

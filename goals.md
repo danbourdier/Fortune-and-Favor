@@ -12,11 +12,15 @@ transition css a must!
 
 Comparing cards is a multiple step process
   1. I need to track card to compare against
+    * need to wipe cards to compare on certain conditions
   2. I need to return bool if card to match and clicked card values are same
     * If bool is true, 
       - lock cards (remove listeners and shade unique css)
       - Push both to revealed cards instance var
       - check for remaining pairs (method?)
-        > if none
+        > if none, execute #gameOver which triggers popup that has button connected to
+          >> listener that wipes popup and calls #startGame again.
       - increment moves
     * If bool is false
+      - increment moves
+      - revert css
