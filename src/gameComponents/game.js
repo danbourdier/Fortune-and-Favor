@@ -41,11 +41,15 @@ class Game {
       card2Html.className = 'locked'
       // Store our cards
       this.revealedCards.push( [ card1.value, card2.value ] )
-      
+
       // win logic check call
     } else {
       // set css back
-      // flip (!both?)
+      card1Html.className = 'card'
+      card2Html.className = 'card'
+      // flip (both)
+      card1.flip()
+      card2.flip()
       // lose logic check call
     }
   }
