@@ -1,6 +1,6 @@
 import Card from './card.js'
 
-// Directives for this class:
+// Directives:
 //  1. class method to render initial layout with inner html. Receives n*n cards
 //  2. Store cards in instance variable
 //  3. Shuffle order of cards in collection
@@ -11,6 +11,7 @@ class Layout {
     this.size = Number(rows) * Number(columns)
     this.cards = []
   }
+
 
   // This solves our issue of not having matching cards(values)
   cleanCards(list) {
@@ -30,7 +31,6 @@ class Layout {
     // We return our collection of pushed pairs.
     return cleanDeck
   }
-
 
 
   // This is our class method for instantiating a brand new deck
@@ -74,9 +74,7 @@ class Layout {
     const container = document.getElementById('root')
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
     let html = `
-      <figure id="stats">
-      
-      </figure>
+      <figure id="stats"> </figure>
     `
     // Setting the innerHTML to blank ensures we can start from a clean slate
     container.innerHTML = html
@@ -84,21 +82,15 @@ class Layout {
     this.cards.forEach(card => {
       container.appendChild( card.html )
     })
-    
-
   }
 
+  // Finally, our getter to return our deck!
   getCards() {
     return this.cards
   }
 
 
-
 }
-
-
-
-
 
 
 export default Layout

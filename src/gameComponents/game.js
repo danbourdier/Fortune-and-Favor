@@ -1,38 +1,32 @@
 import Layout from './layout.js'
-import Card from './card.js'
 
 // Directives:
-//  1. method to start game
+//  1. method to start game 
 //  2. method to end game
-//  3. method to compare two cards
-//  4. track revealed cards
+//  3. method to compare two cards 
+//  4. track revealed cards 
 //  5. track number of moves 
 //  6. reset game
-//  7. track when 2/2 cards are toggled
-
-// OPTIONS FOR FLOW
-//  Hard refresh, 
-//  resetting instance variables by wiping layout
-  // reset moves, reset remaining Cards, in #startGame create the deck instead of passing as arg
-  //  essentially resetting all instance variables
+//  7. track when 2/2 cards are toggled 
 
 
 class Game {
   constructor() {
-    this.moves = 0
     this.deck = []
-    this.cardToMatch = ''
     this.revealedCards = []
-    // Our flag to *await* user interaction
-    this.gapTime = 0
+    this.cardToMatch = ''
+
+    this.gapTime = 0  // <--- Flag for awaiting user interaction
+    this.moves = 0  // <--- Our incrementer to track moves
 
     // Due to asynchronous nature of event listeners, I ensure scope remains
     //  predictable by binding my methods and encapsulating context w/ that = this
-    this.startGame = this.startGame.bind(this)
-    this.cardMatchingLogic = this.cardMatchingLogic.bind(this)
-    this.clickLogic = this.clickLogic.bind(this)
-    this.applyLogic = this.applyLogic.bind(this)
-    this.startGame = this.startGame.bind(this)
+    this.startGame = this.startGame.bind( this )
+    this.cardMatchingLogic = this.cardMatchingLogic.bind( this )
+    this.clickLogic = this.clickLogic.bind( this )
+    this.applyLogic = this.applyLogic.bind( this )
+    this.startGame = this.startGame.bind( this )
+    this.checkGameStatus = this.checkGameStatus.bind( this )
   }
 
 
@@ -55,8 +49,9 @@ class Game {
       // Store our pair for future winning checks. And reset our card to check against
       this.revealedCards.push( card1.value, card2.value )
       this.cardToMatch = ''
-      // win logic check call
-
+      // Game status check    <-- win/lose/continue
+        this.checkGameStatus()
+    
     } else {
       // We reset our initial CSS shortly after a periodic exposure of our card
       card1HTML.className = 'shown-card'
@@ -66,14 +61,13 @@ class Game {
         this.gapTime = 0
       }, 600)
 
-      // Second to last we flip our cards again to track visibility while resetting
-      //  our tracked card.
+      // On fail, flip/reset cards to track visibility and flow of execution
       card1.flip()
       card2.flip()
-
       this.cardToMatch = ''
-
-      // lose logic check call
+      // Game status check    <-- win/lose/continue
+        this.checkGameStatus()
+    
     }
   }
 
@@ -155,18 +149,34 @@ class Game {
     `
   }
 
-  
-  // isGameOver() {
-  //   // This is what is called everytime we call click on a card
-  //   // We check each of our game instance vars to see if they evaluate to a halting condition
+  checkGameStatus() {
+    let condition
 
-  //   // document.getElementById('game-over-text').className('visible')
-  //   // call to resetGame()
-  // }
+    if ( this.revealedCards.length === this.deck.length ) {
+      condition = 'WIN'
+    } else if ()
+
+    this.isGameOver( condition )
+  }
+
+
+  isGameOver(condition) {
+    // This is what is called everytime we call click on a card
+    // We check each of our game instance vars to see if they evaluate to a halting condition
+    switch (key) {
+      case value:
+        
+        break;
+    
+      default:
+        break;
+    }
+    // document.getElementById('game-over-text').className('visible')
+    // call to resetGame()
+  }
 
 
 }
-
 
 
 export default Game
