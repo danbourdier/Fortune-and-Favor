@@ -165,28 +165,32 @@ class Game {
   }
 
 
+  // This is what is called everytime we call click on a card
+  // We check each of our game instance vars to see if they evaluate to a halting condition
+  //  Upon which we render a different modal aligned with the appropiate response
   isGameOver(status) {
-    // This is what is called everytime we call click on a card
-    // We check each of our game instance vars to see if they evaluate to a halting condition
+    const gameOverModal = document.getElementById('gameover-modal')
+    const shinyButton = document.addEventListener('')
+
     switch ( status ) {
 
       case "YAY":
         
+        gameOverModal.innerText = 'You Won! Play Again?'
+        gameOverModal.className = "visible-gameover-modal"
         break;
       case "NAY":
 
+        gameOverModal.innerText = 'You Ran Our of Available Moves! Try Again?'
+        gameOverModal.className = "visible-gameover-modal"
         break;
       default:
-        // document.getElementById('game-over-text').className('visible')
-        // call to resetGame()
         break;
-
     }
+    
+
   }
 
-  renderGameOverUI() {
-    
-  }
 
 
 }
