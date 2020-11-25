@@ -58,16 +58,17 @@ class Game {
 
   clickLogic(target, cardHTML) {
     let weHaveACard = this.cardToMatch ? this.cardToMatch : ''
+    let that = this
 
     cardHTML.addEventListener('click', function clicker() {
-      this.moves++
+      that.moves++
       cardHTML.className = !target.isVisible() ? 'shown-card' : 'card'
       target.flip()
       // have setTimeout to give transition time?
       if ( weHaveACard ) { 
-        this.cardMatchingLogic( target, this.cardToMatch )
+        that.cardMatchingLogic( target, that.cardToMatch )
       } else {
-        this.cardToMatch = target
+        that.cardToMatch = target
       }
 
     })

@@ -28,25 +28,21 @@ class Layout {
 
   // When we create our deck we dont have matching values yet, this solves that.
   cleanCards() {
-    // our logic to pass over deck, reassign props to ensure we 
-    // have duplicate vals
-    let cleanDeck = []
-
+    // let cleanDeck = []
     for ( let i = 1; i < this.cards.length; i += 2 ) {
       const curr = this.cards[i]
-        let currVal = curr.value
-      const prev = this.cards[i - 1]
-        let prevVal = prev.value
+      const prevVal = this.cards[i - 1]?.value
 
-
+      curr.setValue(prevVal)
     }
-
-    return cleanDeck
   }
 
   shuffleDeck() {
-    // shuffle deck logic
-    // return
+    // let data = this.cleanCards()
+    this.cleanCards()
+    let shuffledData = this.cards.sort( () => Math.random() - 0.5 )
+    
+    return shuffledData
   }
 
 
