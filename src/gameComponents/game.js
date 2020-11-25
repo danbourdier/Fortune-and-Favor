@@ -150,6 +150,9 @@ class Game {
     `
   }
 
+  // For a helper method, I created a means to separate how we evaluate to a 
+  //  certain condition that is invoked with our gameOver method to reset our game.
+
   checkGameStatus() {
     let condition
 
@@ -169,11 +172,10 @@ class Game {
   // We check each of our game instance vars to see if they evaluate to a halting condition
   //  Upon which we render a different modal aligned with the appropiate response
   isGameOver(status) {
-    const gameOverModal = document.getElementById('gameover-modal')
-    const shinyButton = document.addEventListener('')
+    const gameOverModal = document.getElementById('hidden-gameover-modal')
+    const shinyButton = document.getElementById('gameover-button')
 
     switch ( status ) {
-
       case "YAY":
         
         gameOverModal.innerText = 'You Won! Play Again?'
@@ -181,7 +183,7 @@ class Game {
         break;
       case "NAY":
 
-        gameOverModal.innerText = 'You Ran Our of Available Moves! Try Again?'
+        gameOverModal.innerText = 'You Ran Out of Available Moves! Try Again?'
         gameOverModal.className = "visible-gameover-modal"
         break;
       default:
@@ -190,12 +192,12 @@ class Game {
     }
     
     // The last step to the process, our reset button!
-    shinyButton.addEventListener('click', event => {
+    shinyButton?.addEventListener('click', event => {
       event.preventDefault()
       event.stopPropagation()
 
       this.startGame()
-      gameOverModal.className = 'hidden'
+      gameOverModal.className = 'hidden-gameover-modal'
     })
   }
 
