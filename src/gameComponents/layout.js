@@ -26,13 +26,12 @@ class Layout {
   constructor(rows, columns) {
     this.size = Number(rows) * Number(columns)
     this.cards = []
-
-    // Ensure that context is bound to an instance of Layout
+    
   }
 
 
   static applyListeners(cards) {
-    
+
     cards.forEach( (card, idx) => {
       let cardHTML = document.getElementById(`card-${idx}`)
 
