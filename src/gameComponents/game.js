@@ -155,7 +155,7 @@ class Game {
 
   checkGameStatus() {
     let condition
-    debugger
+
     if ( this.revealedCards.length === this.deck.length ) {
       condition = 'YAY'
     } else if ( this.moves === 0 ) {
@@ -172,19 +172,21 @@ class Game {
   // We check each of our game instance vars to see if they evaluate to a halting condition
   //  Upon which we render a different modal aligned with the appropiate response
   isGameOver(status) {
-    const gameOverModal = document.getElementsByClassName('hidden-gameover-modal')[0]
+    // const gameOverModal = document.getElementsByClassName('hidden-gameover-modal')[0]
+    const gameOverModal = document.getElementById('hidden-gameover-modal')
     const shinyButton = document.getElementById('gameover-button')
 
     switch ( status ) {
       case "YAY":
         
         gameOverModal.innerText = 'You Won! Play Again?'
-        gameOverModal.className = "visible-gameover-modal"
+        // gameOverModal.className = "visible-gameover-modal"
+        gameOverModal.style.display = 'block'
         break;
       case "OH BOY":
 
         gameOverModal.innerText = 'You Ran Out of Available Moves! Try Again?'
-        gameOverModal.className = "visible-gameover-modal"
+        gameOverModal.style.display = 'block'
         break;
       default:
           null
@@ -197,7 +199,8 @@ class Game {
       event.stopPropagation()
 
       this.startGame()
-      gameOverModal.className = 'hidden-gameover-modal'
+      // gameOverModal.className = 'hidden-gameover-modal'
+      gameOverModal.style.display = 'none'
     })
   }
 
