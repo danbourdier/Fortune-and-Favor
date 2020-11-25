@@ -36,11 +36,12 @@ class Game {
       // If matching 
       card1Html.removeEventListener('click', clicker)
       card2Html.removeEventListener('click', clicker)
-
+      // locked CSS, need to add class on top of revealed unique background to *darken* image
+      card1Html.className = 'locked'
+      card2Html.className = 'locked'
+      // Store our cards
       this.revealedCards.push( [ card1.value, card2.value ] )
-
-      // remove listeners
-      // set css to locked img
+      
       // win logic check call
     } else {
       // set css back

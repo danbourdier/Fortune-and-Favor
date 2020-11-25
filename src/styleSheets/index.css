@@ -28,6 +28,14 @@
     transition: all .5s ease;
   }
 
+  .locked {
+    background-color: black;
+    padding: 40px;
+    border: grey solid 2px;
+    border-radius: 6px;
+    transition: all .5s ease;
+  }
+
 
 
 
