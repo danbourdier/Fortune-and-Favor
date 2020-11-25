@@ -127,12 +127,12 @@ class Game {
     this.gapTime = 0
 
     // create the layout (instantiation and rendering of each card instance)
-    const newLayout = new Layout(4, 5) // <--- future feature, optional difficulty
+    const newLayout = new Layout(4, 4) // <--- future feature, optional difficulty
     // #renderLayout renders our board
     newLayout.renderLayout()
     // #getCards returns a reference we assign to our var this.deck
     this.deck = newLayout.getCards()
-    this.moves = 2 * this.deck.length
+    this.moves = Math.floor(this.deck.length * 1.2) * 2
     this.applyLogic()
 
     // Of course we need a score board!
