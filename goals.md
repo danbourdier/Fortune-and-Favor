@@ -24,3 +24,7 @@ Comparing cards is a multiple step process
     * If bool is false
       - increment moves
       - revert css
+
+
+Need to ensure that there are pairs of cards that share the same value.
+  * Maybe apply logic on render logic. Or createDeck?

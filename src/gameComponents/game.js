@@ -29,13 +29,23 @@ class Game {
 
 
   cardMatchingLogic(card1, card2) {
+    const card1Html = document.getElementById( `card-${ card1.value }` )
+    const card2Html = document.getElementById( `card-${ card2.value }` )
+
     if (card1.isMatching(card2)) {
       // If matching 
+      card1Html.removeEventListener('click', clicker)
+      card2Html.removeEventListener('click', clicker)
+
       this.revealedCards.push( [ card1.value, card2.value ] )
 
+      // remove listeners
+      // set css to locked img
+      // win logic check call
     } else {
       // set css back
       // flip (!both?)
+      // lose logic check call
     }
   }
 
@@ -44,7 +54,8 @@ class Game {
   clickLogic(target, cardHTML) {
     let weHaveACard = this.cardToMatch ? this.cardToMatch : ''
 
-    cardHTML.addEventListener('click', () => {
+    cardHTML.addEventListener('click', function clicker() {
+      this.moves++
       cardHTML.className = !target.isVisible() ? 'shown-card' : 'card'
       target.flip()
       // have setTimeout to give transition time?
@@ -59,7 +70,6 @@ class Game {
 
 
   applyLogic() {
-
     // I want each html card to execute a function with the card whose value shares the element's id
     this.deck.forEach( card => {
       let cardHTML = document.getElementById(`card-${ card.value }`)
