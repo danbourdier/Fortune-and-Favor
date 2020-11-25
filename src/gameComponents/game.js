@@ -33,7 +33,7 @@ class Game {
       // This is where every every click triggers a call to a method that 
       //  checks win/lose conditions
 
-      cardHTML.className = !instance.isVisible() ? 'shown-card' : 'hidden-card'
+      cardHTML.className = !instance.isVisible() ? 'shown-card' : 'card'
       //  change look of card (css)
 
       instance.flip()
@@ -45,7 +45,7 @@ class Game {
   applyLogic() {
 
     this.deck.forEach( card => {
-      let cardHTML = document.getElementById(`card-${ card.value() }`)
+      let cardHTML = document.getElementById(`card-${ card.value }`)
       // I want each html card to execute a function with the card whose value shares the element's id
       this.clickLogic(card, cardHTML)  
     })
