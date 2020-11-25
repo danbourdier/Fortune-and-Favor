@@ -28,25 +28,32 @@ class Game {
   }
 
 
-  isMatching(card1, card2) {
-    return card1.value == card2.value
+  cardMatchingLogic(card1, card2) {
+    if (target.isMatching(this.cardToMatch)) {
+      // If matching 
+    } else {
+
+    }
   }
 
 
-  clickLogic(instance, cardHTML) {
+
+  clickLogic(target, cardHTML) {
+    let weHaveACard = this.cardToMatch ? this.cardToMatch : ''
 
     cardHTML.addEventListener('click', () => {
+      cardHTML.className = !target.isVisible() ? 'shown-card' : 'card'
+      target.flip()
+
+      if ( weHaveACard ) { // if we have one card selected already
+        this.cardMatchingLogic( target, this.cardToMatch )
+      } else {
+        this.cardToMatch = target
+      }
 
 
-      cardHTML.className = !instance.isVisible() ? 'shown-card' : 'card'
-      instance.flip()
     })
-
   }
-
-
-
-
 
 
   applyLogic() {

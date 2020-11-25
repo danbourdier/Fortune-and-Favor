@@ -24,6 +24,10 @@ class Card {
     this.visible = !this.visible
   }
 
+  isMatching(card) {
+    return this.value === card.value
+  }
+
 
 }
 
