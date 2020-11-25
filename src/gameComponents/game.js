@@ -37,6 +37,8 @@ class Game {
     newLayout.renderLayout()
     // #getCards returns a reference we assign to our instance variable this.deck
     this.deck = newLayout.getCards
+    Layout.applyListeners(this.deck)
+
     this.remainingCards = this.deck.length
     this.revealedCards = []
     
