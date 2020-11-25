@@ -1,31 +1,15 @@
-import Game from './game.js'
 import Card from './card.js'
 
 // Directives for this class:
 //  1. class method to render initial layout with inner html. Receives n*n cards
+//  2. Shuffle order of cards in collection
+//  3. Render board with randomized positioning
 
-
-class Layout extends Game {
+class Layout {
   constructor(rows, columns) {
     this.size = Number(rows) * Number(columns)
     this.cards = []
 
-  }
-
-  static applyListeners(cards) {
-    cards.forEach((card, idx) => {
-      let cardHTML = document.getElementById(`card-${idx}`)
-
-      try {
-        cardHTML.addEventListener('click', () => {
-          card.flip()
-        })
-
-      } catch (error) {
-        console.log('error applying listeners to cards/elements')
-      }
-
-    })
   }
 
   static createDeck = size => {
