@@ -3,22 +3,19 @@
 //  2. instance method to track visibility 
 //  3. method to retrieve value 
 //  4. method to change card status hidden/visible 
-//  5. assign an image to each instance
+//  5. assign an image to each instance 
 
 class Card {
-  constructor(value, idx) {
+  constructor(value) {
     this.value = value
     this.visible = false
     this.image = ''    
 
     this.html = ''
-    this.idx = idx
   }
 
 
-  idx() {
-    return this.idx
-  }
+  // Below are our setters and getters for our instance variables
 
   html() {
     return this.html
@@ -36,10 +33,16 @@ class Card {
     this.value = arg
   }
 
+
+
+  //  Below are our functional methods to change our instances' states.
+  //  Check if the card is flipped.
+  //  And check for equality with other instances!
+  
   isVisible() {
     return this.visible
   }
-
+  
   flip() {
     this.visible = !this.visible
   }
@@ -47,7 +50,6 @@ class Card {
   isMatching(card) {
     return this.value === card.value
   }
-
 
 }
 

@@ -45,7 +45,7 @@ class Game {
 
       // Store our cards
       this.revealedCards.push( [ card1.value, card2.value ] )
-      console.log(this.revealedCards)
+
       this.cardToMatch = ''
       // win logic check call
     } else {
@@ -57,26 +57,29 @@ class Game {
       // flip (both)
       card1.flip()
       card2.flip()
-      console.log(2, this.cardToMatch)
+
       this.cardToMatch = ''
       // lose logic check call
     }
   }
 
-
+  // Our embedded helper function to #applyLogic enables us to utilize an event
+  //   listener to execute logic on click events. Logic to increment moves, changing CSS,
+  //    and more above.
   clickLogic(target, domCard) {
-    // let weHaveACard = this.cardToMatch.constructor.name == 'Card' ? this.cardToMatch : ''
     let that = this
 
     domCard.addEventListener('click', () => {
       that.moves++
-      console.log( 1, that.cardToMatch )
+
       domCard.className = !target.isVisible() ? 'shown-card' : 'card'
       target.flip()
-
+      // Because ES6 cannot validate class instances to truthyness, I had to check 
+      //  for equality of the variable's constructor to the desired comparator.
       if ( that.cardToMatch.constructor.name == "Card" ) { 
         that.cardMatchingLogic( target, that.cardToMatch )
       } else {
+        // If no card yet, we assign our target to our instance variable for reference
         that.cardToMatch = target
       }
 
@@ -84,9 +87,10 @@ class Game {
   }
 
 
+  // This does exactly what the name implies, it applies click logic to each instance
+  //  in our deck of cards. Along with their respective html elements.
   applyLogic() {
-    // I want each html card to execute a function with the card whose value shares the element's id
-    this.deck?.forEach( card => {
+    this.deck?.forEach( card => {   // Conditional operator for optional chaining.
       let cardHTML = card?.html
       this.clickLogic( card, cardHTML )    
     })
@@ -95,19 +99,26 @@ class Game {
 
 
 
+  // Every call to startGame not only wipes our node tree, but also deletes instances
+  //  through a browser's garbage collector. Can be viewed through the performance tab (Chrome)
   startGame() {
-    // create the layout (instantiation and rendering of each card instance.
-    const newLayout = new Layout(4, 4) // <--- future feature, optional difficulty
-    // #renderLayout renders our board
-    newLayout.renderLayout()
-    // #getCards returns a reference we assign to our instance variable this.deck
-    this.deck = newLayout.getCards()
-    this.applyLogic()
-
+    const wipeContainer = document.getElementById('root').innerHTML = ""
+    wipeContainer
     // Where we reset our instance vars
+    this.moves = 0
+    this.deck = []
     this.revealedCards = []
     this.cardToMatch = ''
 
+    // create the layout (instantiation and rendering of each card instance)
+    const newLayout = new Layout(4, 4) // <--- future feature, optional difficulty
+    // #renderLayout renders our board
+    newLayout.renderLayout()
+    // #getCards returns a reference we assign to our var this.deck
+    this.deck = newLayout.getCards()
+    this.applyLogic()
+
+    // 
     const scoreBoard = document.getElementById('stats')
     scoreBoard.innerHTML = `
       <section>
@@ -128,11 +139,6 @@ class Game {
 
   //   // document.getElementById('game-over-text').className('visible')
   //   // call to resetGame()
-  // }
-
-  // resetGame() {
-  //   //  reset variables here
-  //   // change class of popupwindow UI (with modal)
   // }
 
 
