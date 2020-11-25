@@ -28,26 +28,27 @@ class Layout {
     this.cards = []
 
     // Ensure that context is bound to an instance of Layout
-    this.getCards = this.getCards.bind(this)
   }
 
 
   static applyListeners(cards) {
-    cards.forEach( (card, idx) => {
-      let cardHTML = document.getElementById(`card-${idx}`)
 
-      try {
+    console.log(cards)
+    // cards.forEach( (card, idx) => {
+    //   let cardHTML = document.getElementById(`card-${idx}`)
 
-        cardHTML.addEventListener('click', () => {
-          console.log(card)
-          console.log('line-break-test')
-          console.log(card.value)
-        })
-        
-      } catch(error) {
-        console.log('error applying listeners to cards/elements')
-      }
-    })
+    //   try {
+
+    //     cardHTML.addEventListener('click', () => {
+    //       console.log(card)
+    //       console.log('line-break-test')
+    //       console.log(card.value)
+    //     })
+
+    //   } catch(error) {
+    //     console.log('error applying listeners to cards/elements')
+    //   }
+    // })
   }
 
 
@@ -77,9 +78,6 @@ class Layout {
     // Finally we change the HTML in our root to contain all our cards
     container.innerHTML = html
   }
-
-
-
 
 
 
