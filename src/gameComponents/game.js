@@ -46,8 +46,16 @@ class Game {
     if ( ( card1.isMatching(card2) ) && ( card1HTML.id != card2HTML.id ) ) {
       // On satisfying the above, we dynamically change the visualization of our 
       //  card and render click events obsolete!
-      card1HTML.classList.add('blocked')
-      card2HTML.classList.add('blocked')
+
+        // card1HTML.classList.add('blocked')
+        // card2HTML.classList.add('blocked')
+        // this.gapTime = 0
+
+      setTimeout( () => {
+        card1HTML.classList.add('blocked')
+        card2HTML.classList.add('blocked')
+        this.gapTime = 0
+      }, 600)
 
       // Store our pair for future winning checks. And reset our card to check against
       this.revealedCards.push( card1.value, card2.value )
@@ -57,12 +65,11 @@ class Game {
     } else {
       // We reset our initial CSS shortly after a periodic exposure of our card
       card1HTML.className = 'shown-card'
-      setTimeout( 
-        () => { 
-          card1HTML.className = 'card'
-          card2HTML.className = 'card'
-          this.gapTime = 0
-        }, 800)
+      setTimeout( () => { 
+        card1HTML.className = 'card'
+        card2HTML.className = 'card'
+        this.gapTime = 0
+      }, 600)
 
       // Second to last we flip our cards again to track visibility while resetting
       //  our tracked card.
@@ -97,7 +104,7 @@ class Game {
         } else {
           setTimeout(() => {
             that.gapTime = 0
-          }, 800)
+          }, 600)
           // If no card yet, we assign our target to our instance variable for reference
           that.cardToMatch = target
         }
