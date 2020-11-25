@@ -72,6 +72,7 @@
   overflow: auto; 
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
+  margin: 0;
 }
 
   .modal-content {
@@ -80,9 +81,9 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
+    border-radius: 15px;
     width: 45%;
-    height: 30%;
+    height: 18%;
     border: cornflowerblue solid 4px;
   }
 
