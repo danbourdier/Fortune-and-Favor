@@ -17,7 +17,7 @@ class Game {
     this.cardToMatch = ''
 
     this.gapTime = 0  // <--- Flag for awaiting user interaction
-    this.moves = 0  // <--- Our incrementer to track moves
+    this.moves = 0  // <--- Our decrementer to track moves
 
     // Due to asynchronous nature of event listeners, I ensure scope remains
     //  predictable by binding my methods and encapsulating context w/ that = this
@@ -79,10 +79,10 @@ class Game {
     let that = this
 
     domCard.addEventListener('click', () => {
-      that.moves++
       // This flag forces the user to pause before interacting with another card.
       if (that.gapTime === 0) {
         that.gapTime = 1
+        that.moves--
 
         domCard.className = !target.isVisible() ? 'shown-card' : 'card'
         target.flip()
@@ -127,11 +127,12 @@ class Game {
     this.gapTime = 0
 
     // create the layout (instantiation and rendering of each card instance)
-    const newLayout = new Layout(4, 4) // <--- future feature, optional difficulty
+    const newLayout = new Layout(4, 5) // <--- future feature, optional difficulty
     // #renderLayout renders our board
     newLayout.renderLayout()
     // #getCards returns a reference we assign to our var this.deck
     this.deck = newLayout.getCards()
+    this.moves = 3 * this.deck.length
     this.applyLogic()
 
     // Of course we need a score board!
@@ -153,26 +154,38 @@ class Game {
     let condition
 
     if ( this.revealedCards.length === this.deck.length ) {
-      condition = 'WIN'
-    } else if ()
+      condition = 'YAY'
+    } else if ( this.moves === 0 ) {
+      condition = "OH BOY"
+    } else {
+      condition = "NAY"
+    }
 
     this.isGameOver( condition )
   }
 
 
-  isGameOver(condition) {
+  isGameOver(status) {
     // This is what is called everytime we call click on a card
     // We check each of our game instance vars to see if they evaluate to a halting condition
-    switch (key) {
-      case value:
+    switch ( status ) {
+
+      case "YAY":
         
         break;
-    
-      default:
+      case "NAY":
+
         break;
+      default:
+        // document.getElementById('game-over-text').className('visible')
+        // call to resetGame()
+        break;
+
     }
-    // document.getElementById('game-over-text').className('visible')
-    // call to resetGame()
+  }
+
+  renderGameOverUI() {
+    
   }
 
 
