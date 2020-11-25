@@ -107,14 +107,15 @@ class Layout {
   cleanCards(list) {
     let cleanDeck = []
 
-    for (let i = 1; i < this.size; i += 2) {
+    for ( let i = 1; i < this.size; i += 2 ) {
       const card = list[i]
-      const prevVal = list[i - 1]?.value
+      const prevCard = list[i - 1]
+      const prevVal = prevCard?.value
 
-      card.setValue(prevVal)
-      cleanDeck.push(card)
+      card.setValue( prevVal )
+      cleanDeck.push( prevCard, card )
     }
-
+    debugger
     return cleanDeck
   }
 
@@ -140,6 +141,7 @@ class Layout {
   
 
   shuffleDeck(deck) {
+    debugger
     return deck.sort(() => Math.random() - 0.5)
     // let shuffledData = deck.sort(() => Math.random() - 0.5)
     // return shuffledData
@@ -150,6 +152,7 @@ class Layout {
     let unCleanDeck  = Layout.createDeck( this.size ) 
     let unShuffledDeck = this.cleanCards( unCleanDeck )
     this.cards = this.shuffleDeck( unShuffledDeck )
+    debugger
     // First we want to target our root to hook into
     const container = document.getElementById('root')
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
