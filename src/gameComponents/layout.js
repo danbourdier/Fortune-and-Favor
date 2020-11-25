@@ -115,7 +115,7 @@ class Layout {
       card.setValue( prevVal )
       cleanDeck.push( prevCard, card )
     }
-    debugger
+
     return cleanDeck
   }
 
@@ -126,9 +126,9 @@ class Layout {
     while (deck.length < size) {
       let card = new Card(currVal, currVal)
       let domEle = document.createElement("article")
-        domEle.setAttribute("id", `card-${ card.idx }`)
+        domEle.setAttribute("id", `card-${ currVal }`)
         domEle.setAttribute('class', "card")
-        domEle.innerText = card.value
+        domEle.innerText = card.value // <---- to be image soon
       card.setHtml(domEle)
 
       deck.push(card)
@@ -141,10 +141,7 @@ class Layout {
   
 
   shuffleDeck(deck) {
-    debugger
     return deck.sort(() => Math.random() - 0.5)
-    // let shuffledData = deck.sort(() => Math.random() - 0.5)
-    // return shuffledData
   }
 
 
@@ -152,7 +149,6 @@ class Layout {
     let unCleanDeck  = Layout.createDeck( this.size ) 
     let unShuffledDeck = this.cleanCards( unCleanDeck )
     this.cards = this.shuffleDeck( unShuffledDeck )
-    debugger
     // First we want to target our root to hook into
     const container = document.getElementById('root')
     // We instantiate HTML to have a way of adding HTML each iteration of #cards

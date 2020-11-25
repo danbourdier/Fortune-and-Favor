@@ -33,24 +33,26 @@ class Game {
 
 
   cardMatchingLogic(card1, card2) {
-    const card1Html = document.getElementById( `card-${ card1.idx }` )
-    const card2Html = document.getElementById( `card-${ card2.idx }` )
+    const card1HTML = card1.html
+    const card2HTML = card2.html
+    // const card1HTML = document.getElementById( `card-${ card1.html.id }` )
+    // const card2HTML = document.getElementById( `card-${ card2.html.id }` )
 
     if (card1.isMatching(card2)) {
       // If matching 
-      card1Html.removeEventListener('click', clicker)
-      card2Html.removeEventListener('click', clicker)
+      card1HTML.removeEventListener('click', clicker)
+      card2HTML.removeEventListener('click', clicker)
       // locked CSS, need to add class on top of revealed unique background to *darken* image
-      card1Html.className = 'locked'
-      card2Html.className = 'locked'
+      card1HTML.className = 'locked'
+      card2HTML.className = 'locked'
       // Store our cards
       this.revealedCards.push( [ card1.value, card2.value ] )
 
       // win logic check call
     } else {
       // set css back
-      card1Html.className = 'card'
-      card2Html.className = 'card'
+      card1HTML.className = 'card'
+      card2HTML.className = 'card'
       // flip (both)
       card1.flip()
       card2.flip()
@@ -59,14 +61,14 @@ class Game {
   }
 
 
-  clickLogic(target, cardHTML) {
+  clickLogic(target, domCard) {
     let weHaveACard = this.cardToMatch ? this.cardToMatch : ''
     let that = this
-
-    cardHTML.addEventListener('click', function clicker() {
+    debugger
+    domCard.addEventListener('click', function clicker() {
       that.moves++
 
-      cardHTML.className = !target.isVisible() ? 'shown-card' : 'card'
+      domCard.className = !target.isVisible() ? 'shown-card' : 'card'
       target.flip()
       // have setTimeout to give transition time?
       if ( weHaveACard ) { 
@@ -82,7 +84,9 @@ class Game {
   applyLogic() {
     // I want each html card to execute a function with the card whose value shares the element's id
     this.deck?.forEach( card => {
-      let cardHTML = document.getElementById(`card-${ card.idx }`)
+      // let cardHTML = document.getElementById(`card-${ card.html.id }`)
+      debugger
+      let cardHTML = card?.html
       this.clickLogic(card, cardHTML)  
     })
   }
