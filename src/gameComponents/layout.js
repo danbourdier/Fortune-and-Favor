@@ -22,8 +22,18 @@ class Layout {
 
       currVal++
     }
-    // This is where we can shuffle our order of returned cards
+
     return deck
+  }
+
+  cleanCards() {
+    // our logic to pass over deck, reassign props to ensure we 
+    // have duplicate vals
+  }
+
+  shuffleDeck() {
+    // shuffle deck logic
+    // return
   }
 
 
@@ -54,9 +64,10 @@ class Layout {
     container.innerHTML = html
   }
 
-  // This returns our deck belonging to an instance of our board/layout
+  // This returns our deck
   getCards() {
-    return this.cards
+
+    return this.shuffleDeck()
   }
 
 
