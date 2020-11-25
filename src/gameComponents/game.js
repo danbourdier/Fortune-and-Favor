@@ -19,22 +19,22 @@ import Card from './card.js'
 
 class Game {
   constructor() {
-    this.moves = 0 // <--- optional game feature
+    this.moves = 0
     this.deck = []
     this.cardToMatch = ''
     this.revealedCards = []
     // Our flag to *await* user interaction
     this.gapTime = 0
 
-    // Due to asynchronous nature of event listeners, I wanted to ensure scope remains
-    //  predictable. I binded my methods in addition to encapsulating context through
-    //    let that = this
+    // Due to asynchronous nature of event listeners, I ensure scope remains
+    //  predictable by binding my methods and encapsulating context w/ that = this
     this.startGame = this.startGame.bind(this)
     this.cardMatchingLogic = this.cardMatchingLogic.bind(this)
     this.clickLogic = this.clickLogic.bind(this)
     this.applyLogic = this.applyLogic.bind(this)
     this.startGame = this.startGame.bind(this)
   }
+
 
   // Our final check in our process for endless fun! This executes all our logic
   //   for checking matches and acting upon certain conditions met!
@@ -46,11 +46,6 @@ class Game {
     if ( ( card1.isMatching(card2) ) && ( card1HTML.id != card2HTML.id ) ) {
       // On satisfying the above, we dynamically change the visualization of our 
       //  card and render click events obsolete!
-
-        // card1HTML.classList.add('blocked')
-        // card2HTML.classList.add('blocked')
-        // this.gapTime = 0
-
       setTimeout( () => {
         card1HTML.classList.add('blocked')
         card2HTML.classList.add('blocked')
@@ -82,6 +77,7 @@ class Game {
     }
   }
 
+
   // Our embedded helper function to #applyLogic enables us to utilize an event
   //   listener to execute logic on click events. Logic to increment moves, changing CSS,
   //    and more above.
@@ -90,7 +86,6 @@ class Game {
 
     domCard.addEventListener('click', () => {
       that.moves++
-
       // This flag forces the user to pause before interacting with another card.
       if (that.gapTime === 0) {
         that.gapTime = 1
@@ -102,15 +97,15 @@ class Game {
         if (that.cardToMatch.constructor.name == "Card") {
           that.cardMatchingLogic(target, that.cardToMatch)
         } else {
-          setTimeout(() => {
-            that.gapTime = 0
-          }, 600)
+          setTimeout( () => {
+             that.gapTime = 0
+            }, 600)
           // If no card yet, we assign our target to our instance variable for reference
           that.cardToMatch = target
         }
       }
-
     })
+
   }
 
 
@@ -123,7 +118,6 @@ class Game {
     })
 
   }
-
 
 
   // Every call to startGame not only wipes our node tree, but also deletes instances
@@ -161,6 +155,7 @@ class Game {
     `
   }
 
+  
   // isGameOver() {
   //   // This is what is called everytime we call click on a card
   //   // We check each of our game instance vars to see if they evaluate to a halting condition
