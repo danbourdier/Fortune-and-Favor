@@ -22,7 +22,7 @@ class Layout {
 
       currVal++
     }
-
+    // This is where we can shuffle our order of returned cards
     return deck
   }
 
@@ -40,9 +40,9 @@ class Layout {
       </figure>
     `
 
-    this.cards.forEach( (card, idx) => {
+    this.cards.forEach( card => {
       let segment = `
-        <article class="card" id="card-${idx}">
+        <article class="card" id="card-${ card.value }">
           <h3> 
             ${ card.value }
           </h3>

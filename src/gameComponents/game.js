@@ -27,22 +27,28 @@ class Game {
     this.startGame = this.startGame.bind(this)
   }
 
-  clickLogic () {
-    
+  clickLogic(instance, cardHTML) {
+
+    cardHTML.addEventListener('click', () => {
+      // This is where every every click triggers a call to a method that 
+      //  checks win/lose conditions
+      //  change look of card (css)
+      instance.flip()
+    })
+
   }
 
+  // In this func, I am adding logic for two related objects at once
+  applyLogic() {
 
-  static applyListeners(cards) {
-    cards.forEach((card, idx) => {
-      let cardHTML = document.getElementById(`card-${idx}`)
+    this.deck.forEach( card => {
+      let cardHTML = document.getElementById(`card-${ card.value() }`)
+      // I want each html card to execute a function with the card whose value shares the element's id
+      this.clickLogic(card, cardHTML)  
 
-        cardHTML.addEventListener('click', () => {
-          // This is where every every click triggers a call to a method that 
-          //  checks win/lose conditions
-          //  change look of card (css)
-          card.flip()
-        })
     })
+
+
   }
 
 
@@ -54,7 +60,7 @@ class Game {
     newLayout.renderLayout()
     // #getCards returns a reference we assign to our instance variable this.deck
     this.deck = newLayout.getCards()
-    Game.applyListeners(this.deck)
+    this.applyLogic()
 
     this.remainingCards = this.deck.length
     this.revealedCards = []
