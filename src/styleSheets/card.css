@@ -1,0 +1,22 @@
+
+.card {
+  padding: 40px;
+  background-color: darkorange;
+  border: grey solid 2px;
+  border-radius: 6px;
+  transition: all .5s ease;
+}
+
+  .shown-card {
+    background-color: darkslateblue;
+    padding: 40px;
+    border: grey solid 2px;
+    border-radius: 6px;
+    transition: all .5s ease;
+  }
+
+
+.blocked {
+  pointer-events: none;
+  opacity: .3;
+}
