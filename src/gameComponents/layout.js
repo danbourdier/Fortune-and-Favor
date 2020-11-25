@@ -2,7 +2,7 @@ import Card from './card.js'
 
 // Directives for this class:
 //  1. class method to render initial layout with inner html. Receives n*n cards
-
+//  
 
 // To externalize the ability to create multiple instances of cards for our
 //  Layout class, we accept a size argument to determine how many instaces we create
@@ -31,6 +31,18 @@ class Layout {
     this.getCards = this.getCards.bind(this)
   }
 
+
+  static applyListeners(cards) {
+    
+    cards.forEach( (card, idx) => {
+      let cardHTML = document.getElementById(`card-${idx}`)
+
+      cardHTML.addEventListener()
+
+    })
+  }
+
+
   renderLayout() {
     this.cards = createDeck(this.size)
     // First we want to target our root to hook into
@@ -38,7 +50,11 @@ class Layout {
     // Setting the innerHTML to blank ensures we can start from a clean slate
     container.innerHTML = ''
     // We instantiate HTML to have a way of adding HTML each iteration of #cards
-    let html = ''
+    let html = `
+      <figure id="stats">
+      
+      </figure>
+    `
 
     this.cards.forEach( (card, idx) => {
       let segment = `
@@ -50,10 +66,14 @@ class Layout {
       `
       html += segment
     })
-
     // Finally we change the HTML in our root to contain all our cards
     container.innerHTML = html
   }
+
+
+
+
+
 
   // This returns our deck belonging to an instance of our board/layout
   getCards() {

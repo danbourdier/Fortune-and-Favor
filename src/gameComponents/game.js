@@ -24,7 +24,7 @@ import Layout from './layout.js'
 
 class Game {
   constructor() {
-    // this.moves = 0 <--- optional game feature
+    this.moves = 0 // <--- optional game feature
     this.deck = []
     this.remainingCards = 0
     this.revealedCards = []
@@ -32,14 +32,26 @@ class Game {
 
   startGame() {
     // create the layout (instantiation and rendering of each card instance.
-    const newLayout = new Layout(3, 3) // <--- futurefeature, optional difficulty
+    const newLayout = new Layout(3, 3) // <--- future feature, optional difficulty
     // #renderLayout renders our board
     newLayout.renderLayout()
     // #getCards returns a reference we assign to our instance variable this.deck
     this.deck = newLayout.getCards
     this.remainingCards = this.deck.length
     this.revealedCards = []
+    
+    const scoreBoard = document.getElementById('stats')
+    scoreBoard.innerHTML = `
+      <section>
+        <span>
+          Moves made: ${ this.moves }
+        </span>
 
+        <span>
+          Revealed Cards: ${ this.revealedCards }
+        </span>
+      </section>
+    `
   }
 
   isGameOver() {

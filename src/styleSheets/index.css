@@ -12,3 +12,13 @@
 
   border-radius: 6px;
 }
+
+#stats {
+  position: absolute;
+  right: 0;
+}
+
+  #stats section {
+    display: flex;
+    flex-direction: column;
+  }
