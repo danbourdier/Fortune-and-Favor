@@ -32,23 +32,22 @@ class Layout {
 
 
   static applyListeners(cards) {
+    
+    cards.forEach( (card, idx) => {
+      let cardHTML = document.getElementById(`card-${idx}`)
 
-    console.log(cards)
-    // cards.forEach( (card, idx) => {
-    //   let cardHTML = document.getElementById(`card-${idx}`)
+      try {
 
-    //   try {
+        cardHTML.addEventListener('click', () => {
+          console.log(card)
+          console.log('line-break-test')
+          console.log(card.value)
+        })
 
-    //     cardHTML.addEventListener('click', () => {
-    //       console.log(card)
-    //       console.log('line-break-test')
-    //       console.log(card.value)
-    //     })
-
-    //   } catch(error) {
-    //     console.log('error applying listeners to cards/elements')
-    //   }
-    // })
+      } catch(error) {
+        console.log('error applying listeners to cards/elements')
+      }
+    })
   }
 
 
