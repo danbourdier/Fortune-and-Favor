@@ -62,6 +62,7 @@
 
 .modal {
   display: none;
+  flex-direction: column;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -77,8 +78,37 @@
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    width: 45%;
+    height: 30%;
+    border: cornflowerblue solid 4px;
+  }
+
+  #gameover-message {
+    width: fit-content;
+    font-size: 45px;
+    font-family: 'Circular-Loom';
+    margin: auto;
+  }
+
+  #gameover-button {
+    width: 20%;
+    height: 24%;
+    margin: auto;
+    background-color: cornflowerblue;
+    border-radius: 4px;
+    color: whitesmoke;
+    outline: none;
+    font-family: 'Circular-Loom';
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: unset;
+  }
+
+  #gameover-button:active {
+    border: inset;
   }
 
 

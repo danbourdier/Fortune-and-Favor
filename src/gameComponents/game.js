@@ -175,17 +175,17 @@ class Game {
     // const gameOverModal = document.getElementsByClassName('hidden-gameover-modal')[0]
     const gameOverModal = document.getElementById('hidden-gameover-modal')
     const shinyButton = document.getElementById('gameover-button')
+    const message = document.getElementById('gameover-message')
 
     switch ( status ) {
       case "YAY":
         
-        gameOverModal.innerText = 'You Won! Play Again?'
-        // gameOverModal.className = "visible-gameover-modal"
+        message.innerText = 'You Won!'
         gameOverModal.style.display = 'block'
         break;
       case "OH BOY":
 
-        gameOverModal.innerText = 'You Ran Out of Available Moves! Try Again?'
+        message.innerText = 'You Ran Out of Available Moves!'
         gameOverModal.style.display = 'block'
         break;
       default:
@@ -199,7 +199,6 @@ class Game {
       event.stopPropagation()
 
       this.startGame()
-      // gameOverModal.className = 'hidden-gameover-modal'
       gameOverModal.style.display = 'none'
     })
   }
