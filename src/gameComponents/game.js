@@ -21,36 +21,39 @@ class Game {
   constructor() {
     this.moves = 0 // <--- optional game feature
     this.deck = []
-    this.remainingCards = 0
+    this.cardToMatch = ''
     this.revealedCards = []
 
     this.startGame = this.startGame.bind(this)
   }
 
+
+
+
+
   clickLogic(instance, cardHTML) {
 
     cardHTML.addEventListener('click', () => {
-      // This is where every every click triggers a call to a method that 
       //  checks win/lose conditions
-
+      // compares cards
       cardHTML.className = !instance.isVisible() ? 'shown-card' : 'card'
-      //  change look of card (css)
-
       instance.flip()
     })
 
   }
 
-  // In this func, I am adding logic for two related objects at once
+
+
+
+
+
   applyLogic() {
 
+    // I want each html card to execute a function with the card whose value shares the element's id
     this.deck.forEach( card => {
       let cardHTML = document.getElementById(`card-${ card.value }`)
-      // I want each html card to execute a function with the card whose value shares the element's id
       this.clickLogic(card, cardHTML)  
     })
-
-
   }
 
 
@@ -64,9 +67,10 @@ class Game {
     this.deck = newLayout.getCards()
     this.applyLogic()
 
-    this.remainingCards = this.deck.length
+    // Where we reset our instance vars
     this.revealedCards = []
-    
+    this.cardToMatch = ''
+
     const scoreBoard = document.getElementById('stats')
     scoreBoard.innerHTML = `
       <section>
