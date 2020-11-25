@@ -132,7 +132,7 @@ class Game {
     newLayout.renderLayout()
     // #getCards returns a reference we assign to our var this.deck
     this.deck = newLayout.getCards()
-    this.moves = 3 * this.deck.length
+    this.moves = 2 * this.deck.length
     this.applyLogic()
 
     // Of course we need a score board!
@@ -155,7 +155,7 @@ class Game {
 
   checkGameStatus() {
     let condition
-
+    debugger
     if ( this.revealedCards.length === this.deck.length ) {
       condition = 'YAY'
     } else if ( this.moves === 0 ) {
@@ -172,7 +172,7 @@ class Game {
   // We check each of our game instance vars to see if they evaluate to a halting condition
   //  Upon which we render a different modal aligned with the appropiate response
   isGameOver(status) {
-    const gameOverModal = document.getElementById('hidden-gameover-modal')
+    const gameOverModal = document.getElementsByClassName('hidden-gameover-modal')[0]
     const shinyButton = document.getElementById('gameover-button')
 
     switch ( status ) {
@@ -181,7 +181,7 @@ class Game {
         gameOverModal.innerText = 'You Won! Play Again?'
         gameOverModal.className = "visible-gameover-modal"
         break;
-      case "NAY":
+      case "OH BOY":
 
         gameOverModal.innerText = 'You Ran Out of Available Moves! Try Again?'
         gameOverModal.className = "visible-gameover-modal"

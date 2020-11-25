@@ -60,12 +60,12 @@
 
 /* GameOver Modal! */
 
-#hidden-gameover-modal {
+.hidden-gameover-modal {
   display: none;
 }
 
 
-#visible-gameover-modal {
+.visible-gameover-modal {
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -74,7 +74,7 @@
   z-index: 1;
 }
 
-  #visible-gameover-modal::after {
+  .visible-gameover-modal::after {
     position: absolute;
     height: 100vh;
     width: 100vw;
