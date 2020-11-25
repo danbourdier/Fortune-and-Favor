@@ -23,7 +23,12 @@ class Game {
     this.deck = []
     this.cardToMatch = ''
     this.revealedCards = []
+    // Our flag to *await* user interaction
+    this.gapTime = 0
 
+    // Due to asynchronous nature of event listeners, I wanted to ensure scope remains
+    //  predictable. I binded my methods in addition to encapsulating context through
+    //    let that = this
     this.startGame = this.startGame.bind(this)
     this.cardMatchingLogic = this.cardMatchingLogic.bind(this)
     this.clickLogic = this.clickLogic.bind(this)
@@ -31,34 +36,41 @@ class Game {
     this.startGame = this.startGame.bind(this)
   }
 
-
+  // Our final check in our process for endless fun! This executes all our logic
+  //   for checking matches and acting upon certain conditions met!
   cardMatchingLogic(card1, card2) {
     const card1HTML = card1.html
     const card2HTML = card2.html
 
-    // If matching 
-    if ( (card1.isMatching(card2)) && (card1HTML.id != card2HTML.id) ) {
-
-      // locked CSS, need to add class on top of revealed unique background to *darken* image
+    // If matching and not the same card, we perform our block.
+    if ( ( card1.isMatching(card2) ) && ( card1HTML.id != card2HTML.id ) ) {
+      // On satisfying the above, we dynamically change the visualization of our 
+      //  card and render click events obsolete!
       card1HTML.classList.add('blocked')
       card2HTML.classList.add('blocked')
 
-      // Store our cards
-      this.revealedCards.push( [ card1.value, card2.value ] )
-
+      // Store our pair for future winning checks. And reset our card to check against
+      this.revealedCards.push( card1.value, card2.value )
       this.cardToMatch = ''
       // win logic check call
-    } else {
-      // set css back
-      card1HTML.className = 'shown-card'
 
-      card1HTML.className = 'card'
-      card2HTML.className = 'card'
-      // flip (both)
+    } else {
+      // We reset our initial CSS shortly after a periodic exposure of our card
+      card1HTML.className = 'shown-card'
+      setTimeout( 
+        () => { 
+          card1HTML.className = 'card'
+          card2HTML.className = 'card'
+          this.gapTime = 0
+        }, 800)
+
+      // Second to last we flip our cards again to track visibility while resetting
+      //  our tracked card.
       card1.flip()
       card2.flip()
 
       this.cardToMatch = ''
+
       // lose logic check call
     }
   }
@@ -72,15 +84,23 @@ class Game {
     domCard.addEventListener('click', () => {
       that.moves++
 
-      domCard.className = !target.isVisible() ? 'shown-card' : 'card'
-      target.flip()
-      // Because ES6 cannot validate class instances to truthyness, I had to check 
-      //  for equality of the variable's constructor to the desired comparator.
-      if ( that.cardToMatch.constructor.name == "Card" ) { 
-        that.cardMatchingLogic( target, that.cardToMatch )
-      } else {
-        // If no card yet, we assign our target to our instance variable for reference
-        that.cardToMatch = target
+      // This flag forces the user to pause before interacting with another card.
+      if (that.gapTime === 0) {
+        that.gapTime = 1
+
+        domCard.className = !target.isVisible() ? 'shown-card' : 'card'
+        target.flip()
+        // Because ES6 cannot validate class instances to truthyness, I had to check 
+        //  for equality of the variable's constructor to the desired comparator.
+        if (that.cardToMatch.constructor.name == "Card") {
+          that.cardMatchingLogic(target, that.cardToMatch)
+        } else {
+          setTimeout(() => {
+            that.gapTime = 0
+          }, 800)
+          // If no card yet, we assign our target to our instance variable for reference
+          that.cardToMatch = target
+        }
       }
 
     })
@@ -109,6 +129,7 @@ class Game {
     this.deck = []
     this.revealedCards = []
     this.cardToMatch = ''
+    this.gapTime = 0
 
     // create the layout (instantiation and rendering of each card instance)
     const newLayout = new Layout(4, 4) // <--- future feature, optional difficulty
@@ -118,7 +139,7 @@ class Game {
     this.deck = newLayout.getCards()
     this.applyLogic()
 
-    // 
+    // Of course we need a score board!
     const scoreBoard = document.getElementById('stats')
     scoreBoard.innerHTML = `
       <section>
