@@ -35,27 +35,23 @@ class Game {
   cardMatchingLogic(card1, card2) {
     const card1HTML = card1.html
     const card2HTML = card2.html
-    // const card1HTML = document.getElementById( `card-${ card1.html.id }` )
-    // const card2HTML = document.getElementById( `card-${ card2.html.id }` )
 
-    if (card1.isMatching(card2)) {
-      // If matching 
-      // card1HTML.removeEventListener('click', () => {})
-      // card2HTML.removeEventListener('click', () => {})
+    // If matching 
+    if ( (card1.isMatching(card2)) && (card1HTML.id != card2HTML.id) ) {
 
       // locked CSS, need to add class on top of revealed unique background to *darken* image
       card1HTML.classList.add('blocked')
       card2HTML.classList.add('blocked')
 
-      // card1HTML.className = 'locked'
-      // card2HTML.className = 'locked'
-
       // Store our cards
       this.revealedCards.push( [ card1.value, card2.value ] )
       console.log(this.revealedCards)
+      this.cardToMatch = ''
       // win logic check call
     } else {
       // set css back
+      card1HTML.className = 'shown-card'
+
       card1HTML.className = 'card'
       card2HTML.className = 'card'
       // flip (both)
