@@ -94,7 +94,6 @@ class Game {
         that.gapTime = 1
         that.moves--
 
-        // domCard.className = !target.isVisible() ? 'shown-card' : 'card' // needs to change img.src.......................
         domCard.src = !target.isVisible() ? target.image : 'rear.jpeg'
         target.flip()
         // Because ES6 cannot validate class instances to truthyness, I had to check 
@@ -111,7 +110,6 @@ class Game {
 
         }
       }
-      
     })
   }
 
@@ -130,6 +128,9 @@ class Game {
   // Every call to startGame not only wipes our node tree, but also deletes instances
   //  through a browser's garbage collector. Can be viewed through the performance tab (Chrome)
   startGame() {
+    let welcomePopup = document.getElementById('welcome-popup')
+    welcomePopup.style.visibility = 'visible'
+
     const wipeContainer = document.getElementById('root').innerHTML = ""
     wipeContainer
     // Where we reset our instance vars
