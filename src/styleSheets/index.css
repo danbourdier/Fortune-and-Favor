@@ -1,9 +1,24 @@
+
 body {
-  height: 100%;
-  width: 100%;
-  
-  background-color: burlywood;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
 }
+
+  body::after {
+    background-image: url(space.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "";
+    opacity: .45;
+    width: 100vw;
+  }
 
 #root {
   display: flex;

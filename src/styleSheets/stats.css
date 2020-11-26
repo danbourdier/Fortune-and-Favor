@@ -1,14 +1,14 @@
 #stats {
   position: absolute;
-  display: flex;
   flex-wrap: wrap;
   width: 20%;
   height: 35%;
   right: 0;
-  padding: 4px;
+  padding: 6px;
 
-  background-color: beige;
-  border: cornflowerblue solid 4px;
+  opacity: .8;
+  background-color: brown;
+  border: gray solid 4px;
   border-radius: 8px;
 
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -25,4 +25,12 @@
     margin: 2%;
     border-radius: 4px;
     border: solid indianred;
+    transition: all 1s ease;
   }
+    #stats img:active {
+      height: 155%;
+      width: 110%;
+      filter: drop-shadow(2px 4px 26px silver);
+      position: absolute;
+      left: -340%;
+    }

@@ -1,0 +1,43 @@
+
+#welcome-popup {
+  position: absolute;
+    display: flex;
+    flex-direction: column;
+    transition: all 1s ease;
+    opacity: .8;
+  height: 15%;
+    border: solid 4px darkgoldenrod;
+    border-radius: 6px;
+    color: white;
+    font-weight: 900;
+    font-family: 'Circular-Loom';
+}
+
+  #welcome-popup:hover {
+    filter: invert();
+  }
+
+  #welcome-popup-close {
+    position: absolute;
+    right: 0;
+    color: white;
+    font-weight: 900;
+
+    padding: 8px;
+    font-size: larger;
+  }
+
+  #welcome-message {
+    display: flex;
+    flex-direction: column;
+
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: -webkit-fill-available;
+  }
+  #welcome-message span {
+    font-family: 'Courier New', Courier, monospace;
+
+  }
