@@ -7,8 +7,6 @@
   padding: 6px;
 
   opacity: .8;
-  background-color: brown;
-  border: gray solid 4px;
   border-radius: 8px;
 
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -32,5 +30,6 @@
       width: 110%;
       filter: drop-shadow(2px 4px 26px silver);
       position: absolute;
-      left: -340%;
+      top: 25%;
+      left: -25%;
     }

@@ -14,7 +14,7 @@
 }
 
   #welcome-popup:hover {
-    filter: invert();
+    filter: drop-shadow(2px 4px 12px goldenrod);
   }
 
   #welcome-popup-close {
@@ -23,9 +23,13 @@
     color: white;
     font-weight: 900;
 
+    cursor: pointer;
     padding: 8px;
     font-size: larger;
   }
+    #welcome-popup-close:hover { 
+      filter: blur(2px);
+    }
 
   #welcome-message {
     display: flex;

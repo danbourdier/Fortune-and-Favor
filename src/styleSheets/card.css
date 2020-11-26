@@ -7,6 +7,8 @@
   width: 22%;
   height: 43%;
   margin: .5%;
+
+  cursor: pointer;
 }
   .card:hover {
     filter: drop-shadow(2px 4px 100px goldenrod);
