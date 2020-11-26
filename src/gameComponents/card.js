@@ -1,16 +1,16 @@
 // Directives:
 //  1. construct card instances 
 //  2. instance method to track visibility 
-//  3. method to retrieve value 
+//  3. method to retrieve image/value 
 //  4. method to change card status hidden/visible 
-//  5. assign an image to each instance 
+//  5. assign an image to each instance 
 
 class Card {
-  constructor(value) {
-    this.value = value
+  constructor(faceCard) {
+    // this.value = value
     this.visible = false
-    this.image = ''    
-
+    this.image = faceCard    
+    // Our binded DOM element to have ease of reference in future method calls
     this.html = ''
   }
 
@@ -25,12 +25,20 @@ class Card {
     this.html = arg
   }
 
-  value() {
-    return this.value
+  // value() {
+  //   return this.value
+  // }
+
+  // setValue(arg) {
+  //   this.value = arg
+  // }
+
+  image() {
+    return this.image
   }
 
-  setValue(arg) {
-    this.value = arg
+  setImage(arg) {
+    this.image = arg
   }
 
 

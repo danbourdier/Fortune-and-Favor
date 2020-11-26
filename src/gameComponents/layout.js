@@ -10,10 +10,30 @@ class Layout {
   constructor(rows, columns) {
     this.size = Number(rows) * Number(columns)
     this.cards = []
+    this.cardImageUrls = []
   }
 
   static getCardImages() {
-    
+    let images = [
+      'Death.jpg',
+      'Devil.jpg',
+      'Emperor.jpg',
+      'Fool.jpg',
+      'Hangman.jpg',
+      'Hermit.jpg',
+      'Hierophant.jpg',
+      'Judgement.jpg',
+      'Justice.jpg',
+      'Moon.jpg',
+      'Strength.jpg',
+      'Sun.jpg',
+      'Temperance.jpg',
+      'Tower.jpg',
+      'Wheel.jpg',
+      'World.jpg'
+    ]
+
+    return images
   }
 
   // This solves our issue of not having matching cards(values)
@@ -24,10 +44,10 @@ class Layout {
     for ( let i = 1; i < this.size; i += 2 ) {
       const card = list[i]
       const prevCard = list[i - 1]
-      const prevVal = prevCard?.value
+      const prevImg = prevCard?.image
       // We override the current card with the previous card value
-      card.html.innerText = prevVal
-      card.setValue( prevVal )
+      // card.html.innerText = prevImg
+      card?.setImage( prevImg )
       cleanDeck.push( prevCard, card )
     }
 
@@ -39,20 +59,25 @@ class Layout {
   // This is our class method for instantiating a brand new deck
   //  I separated concerns to prevent instances from having un-needed access
   static createDeck = size => {
+    // We not only instantiate Cards, but we assign their respective DOM elements,
+    //  and construct passing a string that represents it's img url
+    //  This image url will be used as a value to compare to other strings as 
+    //    well as set background images (on reveal)
     let deck = []
-    let currVal = 1
-    // Future, create list of image strings to assign
-    // We not only instantiate Cards, but we assign their respective DOM elements
+    let i = 0
+
     while ( deck.length < size ) {
-      let card = new Card( currVal )
-      let domEle = document.createElement( "article" )
-        domEle.setAttribute("id", `card-${ currVal }`)
+      let card = new Card( this.cardImageUrls[ i ] )
+
+      let domEle = document.createElement( "img" )
+        domEle.setAttribute("id", `card-${ i }`)
         domEle.setAttribute('class', "card")
-        domEle.innerText = card.value // <---- to be image soon
+        // domEle.src = 'rear.jpg'
+        domEle.src = card.image // <------------ come back
       card.setHtml( domEle )
 
       deck.push( card )
-      currVal++
+      i++
     }
     // This overall function allows us to dynamically reference respective objects!
     return deck
@@ -70,6 +95,8 @@ class Layout {
   //  their assigned DOM elements to a *root* container on our DOM.
   //  With regard to making calls to our deck creation.
   renderLayout() {
+    this.cardImageUrls = Layout.getCardImages()
+
     let unCleanDeck  = Layout.createDeck( this.size ) 
     let unShuffledDeck = this.cleanCards( unCleanDeck )
     this.cards = this.shuffleDeck( unShuffledDeck )
