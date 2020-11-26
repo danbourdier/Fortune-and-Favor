@@ -18,17 +18,26 @@ class Game {
 
     this.gapTime = 0  // <--- Flag for awaiting user interaction
     this.moves = 0  // <--- Our decrementer to track moves
-
+    this.scoreBoard = ''
     // Due to asynchronous nature of event listeners, I ensure scope remains
     //  predictable by binding my methods and encapsulating context w/ that = this
     this.startGame = this.startGame.bind( this )
     this.cardMatchingLogic = this.cardMatchingLogic.bind( this )
     this.clickLogic = this.clickLogic.bind( this )
-    this.applyLogic = this.applyLogic.bind( this )
+    this.applyGameLogic = this.applyGameLogic.bind( this )
     this.startGame = this.startGame.bind( this )
     this.checkGameStatus = this.checkGameStatus.bind( this )
   }
 
+  updateScoreBoard(firstImage, secondImage) {
+    let firstChildEle = document.createElement( 'img' )
+    let secondChildEle = document.createElement( 'img' )
+      firstChildEle.src = firstImage
+      secondChildEle.src = secondImage
+
+    this.scoreBoard.append( firstChildEle )
+    this.scoreBoard.append( secondChildEle )
+  }
 
   // Our final check in our process for endless fun! This executes all our logic
   //   for checking matches and acting upon certain conditions met!
@@ -46,10 +55,11 @@ class Game {
         this.gapTime = 0
       }, 600)
 
-      // Store our pair for future winning checks. And reset our card to check against
+      // Store our pair for game checks, reset our card to check, and update scoreboard!
       this.revealedCards.push( card1.value, card2.value )
       this.cardToMatch = ''
-      // Game status check    <-- win/lose/continue
+      this.updateScoreBoard( card1.image, card2.image )
+      // Game status check   
         this.checkGameStatus()
     
     } else {
@@ -72,7 +82,7 @@ class Game {
   }
 
 
-  // Our embedded helper function to #applyLogic enables us to utilize an event
+  // Our embedded helper function to #applyGameLogic enables us to utilize an event
   //   listener to execute logic on click events. Logic to increment moves, changing CSS,
   //    and more above.
   clickLogic(target, domCard) {
@@ -84,28 +94,31 @@ class Game {
         that.gapTime = 1
         that.moves--
 
-        domCard.className = !target.isVisible() ? 'shown-card' : 'card'
+        // domCard.className = !target.isVisible() ? 'shown-card' : 'card' // needs to change img.src.......................
+        domCard.src = !target.isVisible() ? target.image : 'rear.jpg'
         target.flip()
         // Because ES6 cannot validate class instances to truthyness, I had to check 
         //  for equality of the variable's constructor to the desired comparator.
         if (that.cardToMatch.constructor.name == "Card") {
           that.cardMatchingLogic(target, that.cardToMatch)
+
         } else {
           setTimeout( () => {
              that.gapTime = 0
             }, 600)
           // If no card yet, we assign our target to our instance variable for reference
           that.cardToMatch = target
+
         }
       }
+      
     })
-
   }
 
 
   // This does exactly what the name implies, it applies click logic to each instance
   //  in our deck of cards. Along with their respective html elements.
-  applyLogic() {
+  applyGameLogic() {
     this.deck?.forEach( card => {   // Conditional operator for optional chaining.
       let cardHTML = card?.html
       this.clickLogic( card, cardHTML )    
@@ -124,6 +137,7 @@ class Game {
     this.deck = []
     this.revealedCards = []
     this.cardToMatch = ''
+    this.scoreBoard = ''
     this.gapTime = 0
 
     // create the layout (instantiation and rendering of each card instance)
@@ -133,21 +147,14 @@ class Game {
     // #getCards returns a reference we assign to our var this.deck
     this.deck = newLayout.getCards()
     this.moves = Math.floor(this.deck.length * 1.2) * 2
-    this.applyLogic()
+    this.applyGameLogic()
+
 
     // Of course we need a score board!
     const scoreBoard = document.getElementById('stats')
-    scoreBoard.innerHTML = `
-      <section>
-        <span>
-          Moves made: ${ this.moves }
-        </span>
+    scoreBoard.innerHTML = ''
+    this.scoreBoard = scoreBoard
 
-        <span>
-          Revealed Cards: ${ this.revealedCards }
-        </span>
-      </section>
-    `
   }
 
   // For a helper method, I created a means to separate how we evaluate to a 

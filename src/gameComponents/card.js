@@ -25,14 +25,6 @@ class Card {
     this.html = arg
   }
 
-  // value() {
-  //   return this.value
-  // }
-
-  // setValue(arg) {
-  //   this.value = arg
-  // }
-
   image() {
     return this.image
   }
@@ -56,7 +48,7 @@ class Card {
   }
 
   isMatching(card) {
-    return this.value === card.value
+    return this.image === card.image
   }
 
 }

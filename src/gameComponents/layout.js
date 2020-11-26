@@ -45,8 +45,7 @@ class Layout {
       const card = list[i]
       const prevCard = list[i - 1]
       const prevImg = prevCard?.image
-      // We override the current card with the previous card value
-      // card.html.innerText = prevImg
+      // We override the current card with the prev card comparator (img string)
       card?.setImage( prevImg )
       cleanDeck.push( prevCard, card )
     }
@@ -59,10 +58,8 @@ class Layout {
   // This is our class method for instantiating a brand new deck
   //  I separated concerns to prevent instances from having un-needed access
   static createDeck = size => {
-    // We not only instantiate Cards, but we assign their respective DOM elements,
-    //  and construct passing a string that represents it's img url
-    //  This image url will be used as a value to compare to other strings as 
-    //    well as set background images (on reveal)
+    // We instantiate Cards, assign their DOM elements, and construct them by passing
+    //   unique img urls to compare and use as CSS img urls!
     let deck = []
     let i = 0
 
@@ -72,10 +69,10 @@ class Layout {
       let domEle = document.createElement( "img" )
         domEle.setAttribute("id", `card-${ i }`)
         domEle.setAttribute('class', "card")
-        // domEle.src = 'rear.jpg'
-        domEle.src = card.image // <------------ come back
+        domEle.src = 'rear.jpg'
+        // domEle.src = card.image // <----------------------------------- come back
+      
       card.setHtml( domEle )
-
       deck.push( card )
       i++
     }
