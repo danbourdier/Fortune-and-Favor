@@ -34,7 +34,6 @@ class Card {
   }
 
 
-
   //  Below are our functional methods to change our instances' states.
   //  Check if the card is flipped.
   //  And check for equality with other instances!

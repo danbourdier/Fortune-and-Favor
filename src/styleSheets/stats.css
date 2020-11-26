@@ -1,9 +1,15 @@
 #stats {
   position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 20%;
   right: 0;
+
+  background-color: beige;
+  border: green solid 4px;
 }
 
-  #stats section {
-    display: flex;
-    flex-direction: column;
+  #stats img {
+    height: 4%;
+    width: 3%;
   }

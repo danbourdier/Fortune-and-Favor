@@ -57,19 +57,19 @@ class Layout {
 
   // This is our class method for instantiating a brand new deck
   //  I separated concerns to prevent instances from having un-needed access
-  static createDeck = size => {
+  static createDeck = (size, images) => {
     // We instantiate Cards, assign their DOM elements, and construct them by passing
     //   unique img urls to compare and use as CSS img urls!
     let deck = []
     let i = 0
 
     while ( deck.length < size ) {
-      let card = new Card( this.cardImageUrls[ i ] )
+      let card = new Card( images[ i ] )
 
       let domEle = document.createElement( "img" )
         domEle.setAttribute("id", `card-${ i }`)
         domEle.setAttribute('class', "card")
-        domEle.src = 'rear.jpg'
+        domEle.src = 'rear.jpeg'
         // domEle.src = card.image // <----------------------------------- come back
       
       card.setHtml( domEle )
@@ -94,7 +94,7 @@ class Layout {
   renderLayout() {
     this.cardImageUrls = Layout.getCardImages()
 
-    let unCleanDeck  = Layout.createDeck( this.size ) 
+    let unCleanDeck  = Layout.createDeck( this.size, this.cardImageUrls ) 
     let unShuffledDeck = this.cleanCards( unCleanDeck )
     this.cards = this.shuffleDeck( unShuffledDeck )
     // First we want to target our root to hook into

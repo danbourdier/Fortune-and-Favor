@@ -64,10 +64,10 @@ class Game {
     
     } else {
       // We reset our initial CSS shortly after a periodic exposure of our card
-      card1HTML.className = 'shown-card'
+      card1HTML.src = card1.image
       setTimeout( () => { 
-        card1HTML.className = 'card'
-        card2HTML.className = 'card'
+        card1HTML.src = 'rear.jpeg'
+        card2HTML.src = 'rear.jpeg'
         this.gapTime = 0
       }, 600)
 
@@ -95,7 +95,7 @@ class Game {
         that.moves--
 
         // domCard.className = !target.isVisible() ? 'shown-card' : 'card' // needs to change img.src.......................
-        domCard.src = !target.isVisible() ? target.image : 'rear.jpg'
+        domCard.src = !target.isVisible() ? target.image : 'rear.jpeg'
         target.flip()
         // Because ES6 cannot validate class instances to truthyness, I had to check 
         //  for equality of the variable's constructor to the desired comparator.
