@@ -1,4 +1,4 @@
-# Fortune and Favor Coding Assignment!
+# Fortune and Favor Card Matching Game
   (Because fortune favors those who are bold) 
 
   ### AUTHORED BY: *`Daniel(Dan) Bourdier!!!`*
