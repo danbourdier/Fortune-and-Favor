@@ -37,7 +37,7 @@ class Layout {
   }
 
   // This solves our issue of not having matching cards(values)
-  cleanCards(list) {
+  cleanCards( list ) {
     let cleanDeck = []
 
     // We parse over our collection
@@ -70,7 +70,6 @@ class Layout {
         domEle.setAttribute("id", `card-${ i }`)
         domEle.setAttribute('class', "card")
         domEle.src = 'rear.jpeg'
-        // domEle.src = card.image // <----------------------------------- come back
       
       card.setHtml( domEle )
       deck.push( card )

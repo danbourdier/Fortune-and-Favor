@@ -29,7 +29,7 @@ class Game {
     this.checkGameStatus = this.checkGameStatus.bind( this )
   }
 
-  updateScoreBoard(firstImage, secondImage) {
+  updateScoreBoard( firstImage, secondImage ) {
     let firstChildEle = document.createElement( 'img' )
     let secondChildEle = document.createElement( 'img' )
       firstChildEle.src = firstImage
@@ -180,7 +180,6 @@ class Game {
   // We check each of our game instance vars to see if they evaluate to a halting condition
   //  Upon which we render a different modal aligned with the appropiate response
   isGameOver(status) {
-    // const gameOverModal = document.getElementsByClassName('hidden-gameover-modal')[0]
     const gameOverModal = document.getElementById('hidden-gameover-modal')
     const shinyButton = document.getElementById('gameover-button')
     const message = document.getElementById('gameover-message')

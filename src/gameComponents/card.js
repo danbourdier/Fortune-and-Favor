@@ -7,13 +7,10 @@
 
 class Card {
   constructor(faceCard) {
-    // this.value = value
     this.visible = false
     this.image = faceCard    
-    // Our binded DOM element to have ease of reference in future method calls
     this.html = ''
   }
-
 
   // Below are our setters and getters for our instance variables
 
