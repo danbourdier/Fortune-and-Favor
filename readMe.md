@@ -17,3 +17,5 @@
 * run ` node src/server.js `
 * Open browser and go to `localhost:3000` !
 * Have Fun!
+
+--test
